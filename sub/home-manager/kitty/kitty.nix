@@ -1,0 +1,14 @@
+{
+  programs.kitty = {
+    enable = true;
+
+    themeFile = "Earthsong";
+
+    settings = {
+      bold_font        = "auto";
+      italic_font      = "auto";
+      bold_italic_font = "auto";
+      font_size        = 18.0;
+    };
+  };
+}
