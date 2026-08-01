@@ -33,6 +33,7 @@
       ./kitty/kitty.nix
       ./nvim/nvim.nix
       ./yazi/yazi.nix
+      ./zathura.nix
       ./zsh/zsh.nix
     ];
   };

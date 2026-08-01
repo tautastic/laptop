@@ -15,7 +15,6 @@
     xclip                   # Clipboard interface for X11 (copy/paste from terminal)
     xsel                    # Another clipboard tool for X11
     gnome-disk-utility      # Udisks graphical front-end
-    papers                  # GNOME's document viewer
     nautilus                # File manager for GNOME
     loupe                   # GNOME's image viewer application written with GTK4 and Rust
     showtime                # GNOME's video player
@@ -31,6 +30,5 @@
     exiftool                # Meta information reader/writer
     picard                  # Music metadata reader/wrtier
     amberol                 # Music Player
-    xdot
   ];
 }
