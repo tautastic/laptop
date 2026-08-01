@@ -8,7 +8,8 @@
     };
 
     mappings = {
-      #"<C-r>" = "recolor";
+      "<C-f>" = "fullscreen";
+      "<C-p>" = "presentation";
     };
   };
 }
