@@ -16,7 +16,7 @@
     cff = "~/.config/nixos/flake.nix";
     cfh = "~/.config/nixos/sub/home-manager/home.nix";
     cft = "~/.config/nixos/sub/home-manager/kitty/kitty.nix";
-    cfv = "~/.config/nixos/sub/home-manager/nvim/nvim.lua";
+    cfv = "~/.config/nixos/sub/home-manager/vis/vis.nix";
     cfy = "~/.config/nixos/sub/home-manager/yazi/yazi.nix";
     cfz = "~/.config/nixos/sub/home-manager/zsh/zsh.nix";
     cfbm = "~/.config/nixos/sub/home-manager/zsh/bookmarks.nix";

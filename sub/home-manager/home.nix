@@ -23,6 +23,13 @@
       flake = "/home/${specialArgs.username}/.config/nixos";
     };
 
+    programs.nix-your-shell = {
+      enable = true;
+      enableZshIntegration = true;
+      # Optional: Whether to pipe the build output through nix-output-monitor. Default: false.
+      nix-output-monitor.enable = false;
+    };
+
     imports = [
       ./fonts.nix
       ./gnome-settings.nix
@@ -31,7 +38,7 @@
       ./librewolf.nix
       ./jetbrains.nix
       ./kitty/kitty.nix
-      ./nvim/nvim.nix
+      ./vis/vis.nix
       ./yazi/yazi.nix
       ./zathura.nix
       ./zsh/zsh.nix

@@ -20,21 +20,17 @@
     hostname = "nixos";
     system = "x86_64-linux";
     stateVersion = "26.05";
-
     username = "tau";
     passwordHash = "DUMMY_HASH_REPLACE_DURING_INSTALL";
-
     gitUsername = "tautastic";
     gitUseremail = "tautastic@proton.me";
   in
   {
     nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
       system = system;
-
       specialArgs = {
         inherit hostname system stateVersion username passwordHash gitUsername gitUseremail;
       };
-
       modules = [
         { system.stateVersion = stateVersion; }
         home-manager.nixosModules.home-manager {

@@ -1,4 +1,3 @@
--- Basic options
 vim.g.mapleader = " "
 
 vim.opt.title = true
@@ -19,30 +18,22 @@ vim.opt.relativenumber = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- Automatically switch a buffer name when the target file is not readable or writable
 vim.g.suda_smart_edit = 1
 
--- Arabic support
 vim.opt.termbidi = true
 
--- Filetype plugin
 vim.cmd("filetype plugin on")
 
--- Colorscheme
 vim.opt.background = "dark"
 vim.cmd("syntax on")
 vim.cmd("colorscheme monokai-pro")
 
--- Show spaces and tabs
 vim.opt.listchars = "tab:--,space:·"
 
--- Autocompletion
 vim.opt.wildmode = "longest,list,full"
 
--- Mappings
 vim.keymap.set("n", "<leader><leader>w", ":set list!<CR>", { noremap = true })
 
--- Toggle hidden all function (hides airline and other stuff)
 local hidden_all = 0
 function ToggleHiddenAll()
     if hidden_all == 0 then
@@ -61,7 +52,6 @@ function ToggleHiddenAll()
 end
 vim.keymap.set("n", "<leader>h", ToggleHiddenAll, { noremap = true })
 
--- Automatically delete trailing whitespace and newlines
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function()
@@ -76,19 +66,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
--- Convert entire file to spaces (tabs → spaces)
 vim.api.nvim_create_user_command('ToSpaces', function()
     local ts = vim.opt.tabstop:get()
     vim.cmd('set expandtab')
     vim.cmd('retab!')
-    vim.opt.tabstop = ts   -- restore original if needed
-    print('Converted to spaces (tabstop = ' .. ts .. ')')
+    vim.opt.tabstop = ts    print('Converted to spaces (tabstop = ' .. ts .. ')')
 end, { bang = true })
 
--- Convert entire file to tabs (spaces → tabs)
 vim.api.nvim_create_user_command('ToTabs', function()
     local ts = vim.opt.tabstop:get()
-    -- First normalise to spaces, then to tabs (handles mixed input)
     vim.cmd('set expandtab')
     vim.cmd('retab!')
     vim.cmd('set noexpandtab')
@@ -97,7 +83,18 @@ vim.api.nvim_create_user_command('ToTabs', function()
     print('Converted to tabs (tabstop = ' .. ts .. ')')
 end, { bang = true })
 
--- Turns off highlighting on the bits of code that are changed in diff mode
+vim.keymap.set("n", "<Leader>dq", 'ciw""<Esc>P', { noremap = true })
+
+vim.keymap.set("n", "<Leader>sq", "ciw''<Esc>P", { noremap = true })
+
+vim.keymap.set("n", "<Leader>rq", function()
+    vim.cmd("normal! daW")
+    local text = vim.fn.getreg('"')
+    local cleaned = text:gsub("['\"]", "")
+    vim.fn.setreg('"', cleaned)
+    vim.cmd("normal! P")
+end, { noremap = true })
+
 if vim.opt.diff:get() then
     vim.cmd("highlight! link DiffText MatchParen")
 end
