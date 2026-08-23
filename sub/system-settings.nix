@@ -44,4 +44,9 @@
   networking.firewall.enable = false;
 
   services.gvfs.enable = true;
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+  };
 }
