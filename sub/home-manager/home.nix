@@ -1,7 +1,6 @@
 { config, pkgs, specialArgs, ... }:
 
 {
-
   home-manager.users.${specialArgs.username} = { config, ... }: {
     home.stateVersion = specialArgs.stateVersion;
     xdg.userDirs.enable = true;

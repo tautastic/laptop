@@ -12,7 +12,7 @@ let
     (builtins.map (name: "hash -d ${name}=${dirBookmarks.${name}}")
       (builtins.attrNames dirBookmarks));
 
-  devShellNames = [ "c" "go" "hs" "lean" "ocaml" "zig" ];
+  devShellNames = [ "c" "go" "hs" "js" "lean" "ocaml" "py" "zig" ];
   devShellAliases = builtins.listToAttrs (map (x: {
     name = "nix-${x}";
     value = "nix-shell --argstr lang ${x} ~/.config/nixos/sub/home-manager/shell.nix";
