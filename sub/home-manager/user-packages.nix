@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -22,13 +22,14 @@
     exiftool                # Meta information reader/writer
     picard                  # Music metadata reader/wrtier
     amberol                 # Music Player
-    wl-clipboard            # Wayland Clipboard
-    zinit                   # Plugin loader for zsh
+    wl-clipboard             # Wayland Clipboard
+    zinit                    # Plugin loader for zsh
     gcc
     gnumake
     go
     nodejs_24
-    pnpm
     biome
+  ] ++ [
+    pkgsUnstable.pnpm_12
   ];
 }

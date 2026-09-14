@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -14,8 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = { self, nixpkgs, home-manager, nix-jetbrains-plugins, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-jetbrains-plugins, ... }:
   let
     hostname = "nixos";
     system = "x86_64-linux";
@@ -24,6 +24,10 @@
     passwordHash = "DUMMY_HASH_REPLACE_DURING_INSTALL";
     gitUsername = "tautastic";
     gitUseremail = "tautastic@proton.me";
+    pkgsUnstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in
   {
     nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
@@ -35,7 +39,7 @@
         { system.stateVersion = stateVersion; }
         home-manager.nixosModules.home-manager {
           home-manager.extraSpecialArgs = {
-            inherit nix-jetbrains-plugins;
+            inherit nix-jetbrains-plugins pkgsUnstable;
           };
         }
         ./sub/home-manager/home.nix
