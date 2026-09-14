@@ -28,7 +28,7 @@ let
     fi
     setopt interactive_comments
     bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
-    export PATH="$PATH:$HOME/.local/bin:$HOME/.elan/bin:$GOPATH/bin"
+    export PATH="$PATH:$HOME/.local/bin:$HOME/.elan/bin:$GOPATH/bin:$HOME/.local/share/pnpm/bin"
     tmp() {
       local dir
       dir=$(mktemp -d) || return 1

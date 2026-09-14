@@ -8,10 +8,11 @@ let
     "String Manipulation"
     "izhangzhihao.rainbow.brackets.lite"
   ];
-  goland = pkgs.jetbrains.goland;
-  golandWithPlugins = nix-jetbrains-plugins.lib.buildIdeWithPlugins pkgs goland pluginList;
+  goland = nix-jetbrains-plugins.lib.buildIdeWithPlugins pkgs pkgs.jetbrains.goland pluginList;
+  webstorm = nix-jetbrains-plugins.lib.buildIdeWithPlugins pkgs pkgs.jetbrains.webstorm pluginList;
 in {
   home.packages = with pkgs; [
-    golandWithPlugins
+    goland
+    webstorm
   ];
 }

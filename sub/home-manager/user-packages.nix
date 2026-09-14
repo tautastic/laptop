@@ -23,6 +23,12 @@
     picard                  # Music metadata reader/wrtier
     amberol                 # Music Player
     wl-clipboard            # Wayland Clipboard
-    zinit
+    zinit                   # Plugin loader for zsh
+    gcc
+    gnumake
+    go
+    nodejs_24
+    pnpm
+    biome
   ];
 }

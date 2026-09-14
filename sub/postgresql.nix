@@ -20,7 +20,7 @@
         name = "tau";
         ensureClauses = {
           createdb = true;
-          password = "SCRAM-SHA-256$4096:1Yvu5Fg+agkqS+rugqp1/Q==$dAdakUkYUs3myh5RkqVc3+0W964fxtFN4IDtxXc628E=:/1SdElNxIZKeSfwqMUkyQem9MyUIK+wk0/7JKVHIN9M=";
+          password = "SCRAM-SHA-256$4096:BQfaF80MKlFGJTpYM5MUsQ==$iGNS5e/zLmOQryS1i0o7g6o0sYEOy9NEkY1GqwX2BFk=:KAz0xW69QumqDcJ9XGlVF2f2/3TDFDS4RtBg3FEq2CY=";
         };
       }
     ];
