@@ -14,7 +14,7 @@
       # IPv6 local connections
       host all all ::1/128 scram-sha-256
     '';
-    ensureDatabases = [ "eng_ara_dict" ];
+    ensureDatabases = [ "tasrif_db" ];
     ensureUsers = [
       {
         name = "tau";

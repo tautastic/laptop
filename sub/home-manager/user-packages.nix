@@ -29,6 +29,7 @@
     go
     nodejs_24
     biome
+    claude-code
   ] ++ [
     pkgsUnstable.pnpm_12
   ];
