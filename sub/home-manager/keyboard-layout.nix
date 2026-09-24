@@ -14,7 +14,7 @@
       sources = [
         (lib.hm.gvariant.mkTuple [ "xkb" "us" ])
         (lib.hm.gvariant.mkTuple [ "xkb" "de" ])
-        (lib.hm.gvariant.mkTuple [ "xkb" "ara+mac" ])
+        (lib.hm.gvariant.mkTuple [ "xkb" "ara" ])
       ];
       per-window = false;
     };

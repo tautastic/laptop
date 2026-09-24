@@ -8,13 +8,6 @@
 
     programs.home-manager.enable = true;
 
-    programs.git = {
-      enable = true;
-      settings.user.name = specialArgs.gitUsername;
-      settings.user.email = specialArgs.gitUseremail;
-      settings.init.defaultBranch = "main";
-    };
-
     programs.nh = {
       enable = true;
       clean.enable = true;
@@ -31,6 +24,7 @@
 
     imports = [
       ./fonts.nix
+      ./git/git.nix
       ./gnome-settings.nix
       ./user-packages.nix
       ./keyboard-layout.nix

@@ -22,8 +22,6 @@
     stateVersion = "26.05";
     username = "tau";
     passwordHash = "DUMMY_HASH_REPLACE_DURING_INSTALL";
-    gitUsername = "tautastic";
-    gitUseremail = "tautastic@proton.me";
     pkgsUnstable = import nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
@@ -33,7 +31,7 @@
     nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
       system = system;
       specialArgs = {
-        inherit hostname system stateVersion username passwordHash gitUsername gitUseremail;
+        inherit hostname system stateVersion username passwordHash;
       };
       modules = [
         { system.stateVersion = stateVersion; }

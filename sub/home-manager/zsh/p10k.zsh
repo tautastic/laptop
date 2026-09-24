@@ -13,6 +13,7 @@
     context                 # user@hostname
     dir                     # current directory
     vcs                     # git status
+    git_identity
     newline                 # \n
     prompt_char             # prompt symbol
   )

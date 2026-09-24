@@ -38,6 +38,26 @@ let
       fi
     }
 
+    gencomp() {
+      if (( $# < 1 )); then
+        print -u2 "usage: gencomp <command> [name]"
+        return 2
+      fi
+      local bin=$1 name=''${2:-''${1:t}} tmpfile
+      local dir=''${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions
+      mkdir -p $dir || return 1
+      tmpfile=$(mktemp) || return 1
+      if ! $bin completion zsh >| $tmpfile || [[ ! -s $tmpfile ]]; then
+        command rm -f $tmpfile
+        print -u2 "gencomp: $bin produced no zsh completion script"
+        return 1
+      fi
+      command mv $tmpfile $dir/_$name || return 1
+      chmod 644 $dir/_$name
+      command rm -f ''${ZDOTDIR:-$HOME}/.zcompdump
+      print "gencomp: wrote $dir/_$name (run 'exec zsh')"
+    }
+
     source ${pkgs.zinit}/share/zinit/zinit.zsh
     zinit ice depth=1
     zinit light romkatv/powerlevel10k
@@ -49,12 +69,17 @@ let
 
 in {
   home.file."${config.home.homeDirectory}/.config/zsh/.p10k.zsh".source = ./p10k.zsh;
+  home.file."${config.xdg.dataHome}/zsh/site-functions/.keep".text = "";
   home.packages = [ pkgs.zinit ];
 
   programs.zsh = {
     enable = true;
     dotDir = "${config.home.homeDirectory}/.config/zsh";
     syntaxHighlighting.enable = true;
+    completionInit = ''
+      fpath=(''${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions $fpath)
+      autoload -U compinit && compinit
+    '';
     autocd = true;
     history = {
       size = 1000;
